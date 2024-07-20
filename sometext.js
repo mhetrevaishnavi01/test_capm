@@ -4,3 +4,4 @@ function intro (){
 function intro1(){
     console.log("hii im vscode");
 }
+console.log("done");
