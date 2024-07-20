@@ -1,1 +1,3 @@
-hiii there thsi side bas toolit 
+function intro (){
+    console.log('hii im bas tool');
+}
