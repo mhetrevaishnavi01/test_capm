@@ -1,0 +1,90 @@
+###get service document
+http://localhost:4004/odata/v4/CatalogService
+
+###get metadata
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+###get  all employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###get single employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19807FB
+ 
+###get count of employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###get first 10 employees 
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=10
+
+###get skip 10
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$skip=10&$top=10
+
+###get filter bank name
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=bankName eq 'My Bank of New York'
+
+###get name has sh
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(nameFirst,'Su')
+
+###get select
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$select=nameFirst,nameLast 
+
+###get cds view
+http://localhost:4004/odata/v4/CatalogService/Products
+
+###get single product by id
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EB4052
+
+###get me the order where this product was used
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EB4052/To_Items
+
+###create new record
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type:application/json
+
+{
+      "nameFirst": "Sanu",
+      "nameMiddle": null,
+      "nameLast": "Spring",
+      "nameInitials": null,
+      "sex": "F",
+      "language": "E",
+      "phoneNumber": "+91235667908",
+      "email": "sony.spring@gmail.com",
+      "loginName": "SPRINGS",
+      "Currency_code": "USD",
+      "salaryAmount": 55549,
+      "accountNumber": "111222333",
+      "bankId": "51000",
+      "bankName": "My Bank of Antioch"
+}
+
+###update request
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/ac9b2790-494e-4143-a214-1fdbd26f0e5c
+Content-Type: application/json
+
+{
+    "salaryAmount":6373738,
+    "Currency_code":"EUR"
+
+}
+
+###Delete record
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/496c76ee-619f-4949-82cc-6236b2f5313f
+
+###get all pos
+http://localhost:4004/odata/v4/CatalogService/POs
+
+###get single po
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052
+
+###get both product and item
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052?$expand=Items
+
+###get boost single po
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+###get largest order function
+http://localhost:4004/odata/v4/CatalogService/largestOrder()
